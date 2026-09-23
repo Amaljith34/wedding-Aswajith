@@ -129,6 +129,20 @@ function Jewel() {
   )
 }
 
+function WeddingRings() {
+  return (
+    <svg className="front-rings" viewBox="0 0 72 36" aria-hidden="true">
+      <g fill="none" stroke="#C4A574" strokeWidth="1.4">
+        <circle cx="28" cy="18" r="12.2" />
+        <circle cx="44" cy="18" r="12.2" />
+      </g>
+      <circle cx="28" cy="18" r="8.4" fill="none" stroke="#D8C094" strokeWidth="0.6" />
+      <circle cx="44" cy="18" r="8.4" fill="none" stroke="#D8C094" strokeWidth="0.6" />
+      <path d="M36 11.2c1.2-1.6 3.4-1.8 4.6-.4" fill="none" stroke="#E8D3A4" strokeWidth="0.8" />
+    </svg>
+  )
+}
+
 function Sparkles() {
   const dots = [
     { top: '18%', left: '22%', delay: '0s' },
@@ -236,7 +250,11 @@ export default function LoadingScreen({ onOpen }) {
           aria-hidden="true"
         />
         <div className="front-frame" aria-hidden="true" />
+        <div className="front-frame front-frame-inner" aria-hidden="true" />
         <Sparkles />
+        <div className="front-petals" aria-hidden="true">
+          <span /><span /><span /><span /><span />
+        </div>
 
         <motion.div
           className="front-corner front-corner-tl"
@@ -275,6 +293,15 @@ export default function LoadingScreen({ onOpen }) {
         <SideOrnaments side="right" />
 
         <div className="front-card-inner">
+          <motion.p
+            className="front-kicker"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease }}
+          >
+            Wedding Invitation
+          </motion.p>
+
           <motion.div
             className="front-temple-wrap"
             initial={{ opacity: 0, y: -14 }}
@@ -309,33 +336,61 @@ export default function LoadingScreen({ onOpen }) {
             {bride.firstName} <span>&</span> {groom.firstName}
           </motion.h2>
 
+          <motion.p
+            className="front-invite-line"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+          >
+            Together with their families
+          </motion.p>
+
           <motion.div
             initial={{ opacity: 0, scaleX: 0.7 }}
             animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ delay: 0.44, duration: 0.7, ease }}
+            transition={{ delay: 0.48, duration: 0.7, ease }}
           >
             <Jewel />
           </motion.div>
 
           <motion.p
+            className="front-weekday"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.54, duration: 0.7, ease }}
+          >
+            {date.weekday}
+          </motion.p>
+
+          <motion.p
             className="front-date"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.54, duration: 0.75, ease }}
+            transition={{ delay: 0.6, duration: 0.75, ease }}
             whileHover={canHover ? { letterSpacing: '0.46em' } : undefined}
             whileTap={{ scale: 0.97 }}
           >
             {cardDate}
           </motion.p>
 
+          <motion.p
+            className="front-venue"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.68, duration: 0.7, ease }}
+          >
+            {wedding.venue.name}
+          </motion.p>
+
           <motion.div
             className="front-lotus-wrap"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.66, duration: 0.7, ease }}
-            whileHover={canHover ? { scale: 1.12, y: -2 } : undefined}
-            whileTap={{ scale: 1.08, y: -1 }}
+            transition={{ delay: 0.74, duration: 0.7, ease }}
+            whileHover={canHover ? { scale: 1.08, y: -2 } : undefined}
+            whileTap={{ scale: 1.05, y: -1 }}
           >
+            <WeddingRings />
             <LotusMark className="front-lotus" />
           </motion.div>
         </div>
