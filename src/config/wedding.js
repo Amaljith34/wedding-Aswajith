@@ -1,5 +1,4 @@
 import heroImg from '../assets/images/photo-walk.jpg'
-import invitationImg from '../assets/images/photo-portrait.jpg'
 import gallery1 from '../assets/images/photo-field.jpg'
 import gallery2 from '../assets/images/photo-portrait.jpg'
 import gallery3 from '../assets/images/photo-cake.jpg'
@@ -14,14 +13,16 @@ import gallery7 from '../assets/images/photo-dinner.jpg'
 const wedding = {
   bride: {
     firstName: 'Suchithra',
-    lastName: '',
+    lastName: 'Thodukattil Ayyappan',
     fullName: 'Suchithra',
+    family: 'Thodukattil Ayyappan',
     initial: 'S',
   },
   groom: {
     firstName: 'Aswajith',
-    lastName: '',
+    lastName: 'Mannamcherry',
     fullName: 'Aswajith',
+    family: 'Mannamcherry',
     initial: 'A',
   },
 
@@ -89,7 +90,7 @@ const wedding = {
   },
 
   images: {
-    invitation: invitationImg,
+    invitation: '/card/wedding-card-full.webp',
     hero: heroImg,
     gallery: [
       {
@@ -156,6 +157,10 @@ const wedding = {
     locationIntro:
       'Wedding ceremony at the sacred Guruvayur Temple. Reception to follow at Idam Event Center, Thaikkad.',
     invitationCardLead: 'You are cordially invited to the wedding of',
+    invitationBlessing:
+      'With the blessings of Almighty, we joyfully invite you to grace the wedding of',
+    invitationClosing:
+      'Your presence will make our special day more memorable',
   },
 
   seo: {
