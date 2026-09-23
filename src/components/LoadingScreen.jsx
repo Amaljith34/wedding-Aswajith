@@ -44,7 +44,7 @@ function TempleMotif() {
         <path d="M28.2 31.2h29.6l-2.3-2.2H30.5l-2.3 2.2Z" />
         <rect x="26.6" y="31.2" width="32.8" height="4.4" rx="0.5" />
         <rect x="22.8" y="35.6" width="40.4" height="3.6" rx="0.5" />
-        <rect x="38.2" y="19.4" width="9.6" height="8.4" fill="#FBF6EE" />
+        <rect x="38.2" y="19.4" width="9.6" height="8.4" fill="#F8F4EC" />
         <path d="M40.2 21.6h5.6v3.8h-5.6z" opacity="0.45" />
         <path d="M14 46.2 43 39l29 7.2-3.2 3.4H17.2L14 46.2Z" />
         <rect x="16.4" y="49.4" width="53.2" height="3.2" rx="0.4" />
@@ -87,7 +87,7 @@ function SideOrnaments({ side }) {
           cx={cx}
           cy={cy}
           r={i % 4 === 0 ? 2.35 : 1.85}
-          fill="#FBF6EE"
+          fill="#F8F4EC"
           stroke="#C4A574"
           strokeWidth="0.7"
         />
@@ -127,30 +127,6 @@ function Jewel() {
   )
 }
 
-function FlapMonogram({ brideInitial, groomInitial }) {
-  return (
-    <div className="front-monogram" aria-hidden="true">
-      <svg viewBox="0 0 88 88" className="front-monogram-ring">
-        <circle cx="44" cy="44" r="41" fill="none" stroke="#C4A574" strokeWidth="0.9" />
-        <circle cx="44" cy="44" r="36.5" fill="none" stroke="#C4A574" strokeWidth="0.55" />
-        {[0, 90, 180, 270].map((deg) => (
-          <circle
-            key={deg}
-            cx="44"
-            cy="7"
-            r="1.2"
-            fill="#C4A574"
-            transform={`rotate(${deg} 44 44)`}
-          />
-        ))}
-      </svg>
-      <span className="front-monogram-s font-heading">{brideInitial}</span>
-      <span className="front-monogram-amp">&</span>
-      <span className="front-monogram-a font-heading">{groomInitial}</span>
-    </div>
-  )
-}
-
 export default function LoadingScreen({ onOpen }) {
   const btnRef = useRef(null)
   const { bride, groom, copy, date } = wedding
@@ -159,10 +135,6 @@ export default function LoadingScreen({ onOpen }) {
   const handleClick = (e) => {
     if (btnRef.current) createRipple(e, btnRef.current)
     setTimeout(onOpen, 280)
-  }
-
-  const scrollToEnvelope = () => {
-    document.getElementById('invite-envelope')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   useEffect(() => {
@@ -179,132 +151,92 @@ export default function LoadingScreen({ onOpen }) {
       exit={{ opacity: 0, filter: 'blur(8px)' }}
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
-      <div className="invite-stage">
-        <section className="invite-page front-card">
-          <div className="front-paper" />
-          <CornerFlourish className="front-corner front-corner-tl" />
-          <CornerFlourish className="front-corner front-corner-tr" />
-          <CornerFlourish className="front-corner front-corner-bl" />
-          <CornerFlourish className="front-corner front-corner-br" />
-          <SideOrnaments side="left" />
-          <SideOrnaments side="right" />
+      <section className="invite-page front-card">
+        <div className="front-paper" />
+        <CornerFlourish className="front-corner front-corner-tl" />
+        <CornerFlourish className="front-corner front-corner-tr" />
+        <CornerFlourish className="front-corner front-corner-bl" />
+        <CornerFlourish className="front-corner front-corner-br" />
+        <SideOrnaments side="left" />
+        <SideOrnaments side="right" />
 
-          <div className="front-card-inner">
-            <motion.div
-              className="front-card-top"
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <TempleMotif />
-              <Jewel />
-            </motion.div>
+        <div className="front-card-inner">
+          <motion.div
+            className="front-card-top"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <TempleMotif />
+            <Jewel />
+          </motion.div>
 
-            <motion.p
-              className="front-mono font-heading"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.75 }}
-            >
-              {bride.initial} & {groom.initial}
-            </motion.p>
+          <motion.p
+            className="front-mono font-heading"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.75 }}
+          >
+            {bride.initial} & {groom.initial}
+          </motion.p>
 
-            <motion.h2
-              className="front-names font-heading"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.28, duration: 0.8 }}
-            >
-              {bride.firstName} <span>&</span> {groom.firstName}
-            </motion.h2>
+          <motion.h2
+            className="front-names font-heading"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.28, duration: 0.8 }}
+          >
+            {bride.firstName} <span>&</span> {groom.firstName}
+          </motion.h2>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.42 }}
-            >
-              <Jewel />
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.42 }}
+          >
+            <Jewel />
+          </motion.div>
 
-            <motion.p
-              className="front-date"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.52, duration: 0.7 }}
-            >
-              {cardDate}
-            </motion.p>
+          <motion.p
+            className="front-date"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.52, duration: 0.7 }}
+          >
+            {cardDate}
+          </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.64 }}
-            >
-              <LotusMark className="front-lotus" />
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.64 }}
+          >
+            <LotusMark className="front-lotus" />
+          </motion.div>
+        </div>
 
-          <button
+        <div className="front-seal-anchor">
+          <motion.button
             type="button"
-            className="invite-scroll-hint"
-            aria-label="See envelope"
-            onClick={scrollToEnvelope}
+            onClick={handleClick}
+            className="wax-seal"
+            aria-label={copy.openInvitation}
+            initial={{ scale: 0.82, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.55, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ scale: 1.07 }}
+            whileTap={{ scale: 0.96 }}
           >
-            <span />
-          </button>
-        </section>
-
-        <section id="invite-envelope" className="invite-page front-envelope">
-          <div className="front-paper" />
-          <CornerFlourish className="front-corner front-corner-bl" />
-          <CornerFlourish className="front-corner front-corner-br" />
-
-          <svg
-            className="front-flap-line"
-            viewBox="0 0 1000 420"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M36 28 C36 28, 500 318, 500 318 C500 318, 964 28, 964 28"
-              fill="none"
-              stroke="#5C2430"
-              strokeWidth="4.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <circle cx="36" cy="28" r="5.2" fill="#5C2430" />
-            <circle cx="964" cy="28" r="5.2" fill="#5C2430" />
-          </svg>
-
-          <FlapMonogram
-            brideInitial={bride.initial}
-            groomInitial={groom.initial}
-          />
-
-          <div className="front-seal-anchor">
-            <motion.button
-              type="button"
-              onClick={handleClick}
-              className="wax-seal"
-              aria-label={copy.openInvitation}
-              initial={{ scale: 0.82, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.25, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ scale: 1.07 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              <span className="wax-seal-ring" aria-hidden="true" />
-              <span className="wax-seal-ring wax-seal-ring-delay" aria-hidden="true" />
-              <span ref={btnRef} className="wax-seal-face">
-                <span className="wax-seal-text font-heading">
-                  {bride.initial}&{groom.initial}
-                </span>
+            <span className="wax-seal-ring" aria-hidden="true" />
+            <span className="wax-seal-ring wax-seal-ring-delay" aria-hidden="true" />
+            <span ref={btnRef} className="wax-seal-face">
+              <span className="wax-seal-text font-heading">
+                {bride.initial} & {groom.initial}
               </span>
-            </motion.button>
-          </div>
-        </section>
-      </div>
+            </span>
+          </motion.button>
+        </div>
+      </section>
     </motion.section>
   )
 }

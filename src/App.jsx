@@ -37,7 +37,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-cream text-text overflow-x-hidden">
+    <div className="relative min-h-screen bg-offwhite text-text overflow-x-hidden">
       <AnimatePresence mode="wait">
         {!opened ? (
           <LoadingScreen key="loading" onOpen={handleOpen} />

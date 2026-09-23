@@ -25,10 +25,8 @@ body {
   font-size: 16px;
   letter-spacing: 0.012em;
   line-height: 1.7;
-  background-color: var(--color-cream);
-  background-image:
-    radial-gradient(ellipse 120% 80% at 50% -10%, #fffdf8 0%, transparent 55%),
-    linear-gradient(180deg, #fbf8f2 0%, #f7f3eb 45%, #f3eee4 100%);
+  background-color: var(--color-offwhite);
+  background-image: none;
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -218,15 +216,8 @@ body {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background-color: #f6eee4;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-.invite-stage {
-  width: 100%;
+  background-color: var(--color-offwhite);
+  overflow: hidden;
 }
 
 .invite-page {
@@ -235,17 +226,13 @@ body {
   height: 100svh;
   min-height: 100svh;
   overflow: hidden;
-  background: #f6eee4;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  background: var(--color-offwhite);
 }
 
 .front-paper {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 80% 55% at 50% 42%, #fffdf8 0%, transparent 62%),
-    linear-gradient(180deg, #fbf6ee 0%, #f6eee4 100%);
+  background: var(--color-offwhite);
   pointer-events: none;
 }
 
@@ -270,7 +257,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 7.5rem 1.5rem 5.5rem;
+  padding: 6.5rem 1.5rem 8.5rem;
   text-align: center;
 }
 
@@ -490,12 +477,13 @@ body {
 
 .front-seal-anchor {
   position: absolute;
-  top: 58%;
-  left: 50%;
-  z-index: 4;
+  right: 0;
+  bottom: clamp(1.4rem, 4.5vh, 2.6rem);
+  left: 0;
+  z-index: 5;
   width: clamp(4.6rem, 13vw, 6.4rem);
   height: clamp(4.6rem, 13vw, 6.4rem);
-  transform: translate(-50%, -50%);
+  margin-inline: auto;
 }
 
 @keyframes garland-sway {
@@ -519,45 +507,6 @@ body {
   }
   50% {
     transform: scaleX(-1) rotate(-1.6deg);
-  }
-}
-
-.invite-scroll-hint {
-  position: absolute;
-  right: 0;
-  bottom: 1.25rem;
-  left: 0;
-  z-index: 4;
-  display: grid;
-  width: 2rem;
-  height: 2rem;
-  margin-inline: auto;
-  padding: 0;
-  place-items: center;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.invite-scroll-hint span {
-  display: block;
-  width: 0.7rem;
-  height: 0.7rem;
-  border-right: 1.5px solid rgba(107, 58, 50, 0.45);
-  border-bottom: 1.5px solid rgba(107, 58, 50, 0.45);
-  transform: rotate(45deg);
-  animation: invite-scroll-nudge 1.8s ease-in-out infinite;
-}
-
-@keyframes invite-scroll-nudge {
-  0%,
-  100% {
-    transform: translateY(0) rotate(45deg);
-    opacity: 0.35;
-  }
-  50% {
-    transform: translateY(6px) rotate(45deg);
-    opacity: 0.8;
   }
 }
 
