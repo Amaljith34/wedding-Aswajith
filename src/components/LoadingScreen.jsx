@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import wedding from '../config/wedding'
 
@@ -129,14 +129,50 @@ function Jewel() {
   )
 }
 
+function Sparkles() {
+  const dots = [
+    { top: '18%', left: '22%', delay: '0s' },
+    { top: '26%', left: '78%', delay: '1.1s' },
+    { top: '48%', left: '14%', delay: '0.4s' },
+    { top: '62%', left: '84%', delay: '1.8s' },
+    { top: '34%', left: '48%', delay: '0.9s' },
+    { top: '72%', left: '30%', delay: '1.4s' },
+    { top: '20%', left: '62%', delay: '2.1s' },
+    { top: '78%', left: '68%', delay: '0.6s' },
+  ]
+
+  return (
+    <div className="front-sparkles" aria-hidden="true">
+      {dots.map((dot, i) => (
+        <span
+          key={i}
+          className="front-sparkle"
+          style={{ top: dot.top, left: dot.left, animationDelay: dot.delay }}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function LoadingScreen({ onOpen }) {
   const btnRef = useRef(null)
+  const pageRef = useRef(null)
   const { bride, groom, copy, date } = wedding
   const cardDate = `${date.day} ${date.monthUpper} ${date.year}`
+  const [spot, setSpot] = useState({ x: 50, y: 42 })
 
   const handleClick = (e) => {
     if (btnRef.current) createRipple(e, btnRef.current)
     setTimeout(onOpen, 280)
+  }
+
+  const handlePointerMove = (e) => {
+    const page = pageRef.current
+    if (!page) return
+    const rect = page.getBoundingClientRect()
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
+    setSpot({ x, y })
   }
 
   useEffect(() => {
@@ -153,9 +189,22 @@ export default function LoadingScreen({ onOpen }) {
       exit={{ opacity: 0, filter: 'blur(8px)' }}
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
-      <section className="invite-page front-card">
+      <section
+        ref={pageRef}
+        className="invite-page front-card"
+        onPointerMove={handlePointerMove}
+      >
         <div className="front-paper" />
         <div className="front-glow" aria-hidden="true" />
+        <div
+          className="front-spot"
+          style={{
+            background: `radial-gradient(circle at ${spot.x}% ${spot.y}%, rgba(196,165,116,0.18) 0%, transparent 28%)`,
+          }}
+          aria-hidden="true"
+        />
+        <div className="front-frame" aria-hidden="true" />
+        <Sparkles />
 
         <motion.div
           className="front-corner front-corner-tl"
@@ -279,6 +328,7 @@ export default function LoadingScreen({ onOpen }) {
               </span>
             </span>
           </motion.button>
+          <p className="front-seal-hint">Open invitation</p>
         </div>
       </section>
     </motion.section>

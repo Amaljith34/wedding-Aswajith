@@ -258,6 +258,60 @@ body {
   animation: front-glow-soft 7s ease-in-out infinite;
 }
 
+.front-spot {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: background 0.18s ease-out;
+}
+
+.front-frame {
+  position: absolute;
+  inset: 0.85rem;
+  z-index: 2;
+  border: 1px solid rgba(196, 165, 116, 0.22);
+  box-shadow: inset 0 0 0 4px rgba(248, 244, 236, 0.35);
+  pointer-events: none;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.front-card:hover .front-frame {
+  border-color: rgba(196, 165, 116, 0.42);
+  box-shadow:
+    inset 0 0 0 4px rgba(248, 244, 236, 0.4),
+    inset 0 0 28px rgba(196, 165, 116, 0.06);
+}
+
+.front-sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.front-sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #c4a574;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 6px rgba(196, 165, 116, 0.7);
+  animation: sparkle-twinkle 4.6s ease-in-out infinite;
+}
+
+.front-sparkle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 1px;
+  background: rgba(196, 165, 116, 0.7);
+  transform: translate(-50%, -50%);
+}
+
 .front-card {
   border-top: 1px solid rgba(92, 36, 48, 0.18);
 }
@@ -270,7 +324,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6.5rem 1.5rem 8.5rem;
+  padding: 6.5rem 1.5rem 9.4rem;
   text-align: center;
 }
 
@@ -533,12 +587,39 @@ body {
 .front-seal-anchor {
   position: absolute;
   right: 0;
-  bottom: clamp(1.4rem, 4.5vh, 2.6rem);
+  bottom: clamp(1.1rem, 3.6vh, 2.1rem);
   left: 0;
   z-index: 5;
+  display: flex;
+  width: clamp(4.6rem, 13vw, 6.4rem);
+  height: auto;
+  margin-inline: auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.front-seal-anchor .wax-seal {
   width: clamp(4.6rem, 13vw, 6.4rem);
   height: clamp(4.6rem, 13vw, 6.4rem);
-  margin-inline: auto;
+}
+
+.front-seal-hint {
+  margin: 0;
+  color: #8a6d4f;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-style: italic;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  transition: opacity 0.35s ease, letter-spacing 0.35s ease, color 0.35s ease;
+}
+
+.front-seal-anchor:hover .front-seal-hint {
+  color: #5c2430;
+  letter-spacing: 0.28em;
+  opacity: 0.95;
 }
 
 @keyframes garland-sway {
@@ -599,6 +680,22 @@ body {
   }
 }
 
+@keyframes sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  40% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+}
+
 @media (hover: hover) {
   .wax-seal:hover .wax-seal-face {
     filter: brightness(1.08);
@@ -610,9 +707,14 @@ body {
   .front-temple,
   .front-jewel span,
   .front-side-ornament,
+  .front-sparkle,
   .wax-seal-face,
   .wax-seal-ring {
     animation: none;
+  }
+
+  .front-sparkle {
+    opacity: 0.25;
   }
 }
 
