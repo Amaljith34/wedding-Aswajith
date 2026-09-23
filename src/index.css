@@ -218,15 +218,21 @@ body {
   z-index: 50;
   background-color: var(--color-offwhite);
   overflow: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .invite-page {
   position: relative;
   width: 100%;
   height: 100svh;
+  height: 100dvh;
   min-height: 100svh;
+  min-height: 100dvh;
   overflow: hidden;
   background: var(--color-offwhite);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .front-paper {
@@ -276,7 +282,9 @@ body {
   transition: border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
-.front-card:hover .front-frame {
+.front-card:hover .front-frame,
+.front-card.is-touched .front-frame,
+.front-card:active .front-frame {
   border-color: rgba(196, 165, 116, 0.42);
   box-shadow:
     inset 0 0 0 4px rgba(248, 244, 236, 0.4),
@@ -324,7 +332,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6.5rem 1.5rem 9.4rem;
+  padding:
+    max(4.8rem, calc(env(safe-area-inset-top) + 4.2rem))
+    1.15rem
+    max(8.6rem, calc(env(safe-area-inset-bottom) + 7.8rem));
   text-align: center;
 }
 
@@ -389,7 +400,8 @@ body {
   height: 100%;
 }
 
-.front-card:hover .front-corner {
+.front-card:hover .front-corner,
+.front-card.is-touched .front-corner {
   filter: drop-shadow(0 0 6px rgba(196, 165, 116, 0.35));
 }
 
@@ -427,23 +439,27 @@ body {
   transition: color 0.35s ease;
 }
 
-.front-mono:hover {
+.front-mono:hover,
+.front-mono:active {
   color: #4a1c26;
 }
 
 .front-names {
+  max-width: 92%;
   margin: 0.15rem 0 0.55rem;
   color: #5c2430;
-  font-size: clamp(1.7rem, 5.4vw, 3.35rem);
+  font-size: clamp(1.55rem, 6.4vw, 3.35rem);
   font-weight: 400;
   font-style: italic;
   letter-spacing: 0.045em;
-  line-height: 1.15;
+  line-height: 1.2;
   cursor: default;
+  text-wrap: balance;
   transition: color 0.35s ease;
 }
 
-.front-names:hover {
+.front-names:hover,
+.front-names:active {
   color: #4a1c26;
 }
 
@@ -606,6 +622,9 @@ body {
 
 .front-seal-hint {
   margin: 0;
+  padding: 0.2rem 0.4rem;
+  border: 0;
+  background: transparent;
   color: #8a6d4f;
   font-family: var(--font-heading);
   font-size: 0.68rem;
@@ -613,10 +632,15 @@ body {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   opacity: 0.55;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition: opacity 0.35s ease, letter-spacing 0.35s ease, color 0.35s ease;
 }
 
-.front-seal-anchor:hover .front-seal-hint {
+.front-seal-anchor:hover .front-seal-hint,
+.front-seal-hint:active,
+.front-card.is-touched .front-seal-hint {
   color: #5c2430;
   letter-spacing: 0.28em;
   opacity: 0.95;
@@ -699,6 +723,122 @@ body {
 @media (hover: hover) {
   .wax-seal:hover .wax-seal-face {
     filter: brightness(1.08);
+  }
+}
+
+.wax-seal:active .wax-seal-face,
+.front-card.is-touched .wax-seal-face {
+  filter: brightness(1.08);
+}
+
+@media (hover: none) {
+  .front-seal-hint {
+    letter-spacing: 0.2em;
+    opacity: 0.82;
+  }
+
+  .front-frame {
+    border-color: rgba(196, 165, 116, 0.3);
+  }
+
+  .front-spot {
+    background: radial-gradient(
+      circle at 50% 42%,
+      rgba(196, 165, 116, 0.16) 0%,
+      transparent 32%
+    );
+  }
+}
+
+@media (max-width: 640px) {
+  .front-frame {
+    inset: 0.55rem;
+    box-shadow: inset 0 0 0 3px rgba(248, 244, 236, 0.3);
+  }
+
+  .front-side-ornament {
+    width: 3.15rem;
+  }
+
+  .front-side-left {
+    left: 0.2rem;
+  }
+
+  .front-side-right {
+    right: 0.2rem;
+  }
+
+  .front-corner {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .front-corner-tl,
+  .front-corner-tr {
+    top: 0.7rem;
+  }
+
+  .front-corner-tl,
+  .front-corner-bl {
+    left: 0.7rem;
+  }
+
+  .front-corner-tr,
+  .front-corner-br {
+    right: 0.7rem;
+  }
+
+  .front-corner-bl,
+  .front-corner-br {
+    bottom: 0.7rem;
+  }
+
+  .front-mono {
+    letter-spacing: 0.18em;
+  }
+
+  .front-date {
+    gap: 0.4rem;
+    letter-spacing: 0.2em;
+  }
+
+  .front-jewel {
+    width: 5.8rem;
+  }
+
+  .front-jewel::before,
+  .front-jewel::after {
+    width: 1.7rem;
+  }
+
+  .front-seal-anchor {
+    bottom: max(0.75rem, calc(env(safe-area-inset-bottom) + 0.45rem));
+    width: 5.2rem;
+  }
+
+  .front-seal-anchor .wax-seal {
+    width: 5.2rem;
+    height: 5.2rem;
+  }
+
+  .front-seal-hint {
+    font-size: 0.62rem;
+  }
+
+  .front-sparkle {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+@media (max-width: 380px) {
+  .front-mono {
+    font-size: 2.15rem;
+    letter-spacing: 0.14em;
+  }
+
+  .front-names {
+    font-size: 1.4rem;
   }
 }
 
@@ -1090,16 +1230,24 @@ body {
 
 @media (max-height: 740px) {
   .front-card-inner {
-    padding-top: 5.5rem;
-    padding-bottom: 4.2rem;
+    padding-top: max(3.6rem, calc(env(safe-area-inset-top) + 3rem));
+    padding-bottom: max(7.4rem, calc(env(safe-area-inset-bottom) + 6.6rem));
   }
 
   .front-side-ornament {
-    width: 3.8rem;
+    width: 3.1rem;
+  }
+
+  .front-temple {
+    width: 3.1rem;
   }
 
   .front-mono {
-    letter-spacing: 0.22em;
+    letter-spacing: 0.16em;
+  }
+
+  .front-lotus {
+    width: 2.1rem;
   }
 }
 

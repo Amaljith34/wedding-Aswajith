@@ -160,25 +160,56 @@ export default function LoadingScreen({ onOpen }) {
   const { bride, groom, copy, date } = wedding
   const cardDate = `${date.day} ${date.monthUpper} ${date.year}`
   const [spot, setSpot] = useState({ x: 50, y: 42 })
+  const [canHover, setCanHover] = useState(false)
+  const [touched, setTouched] = useState(false)
+  const touchTimer = useRef(null)
+
+  const moveSpot = (clientX, clientY) => {
+    const page = pageRef.current
+    if (!page) return
+    const rect = page.getBoundingClientRect()
+    const x = ((clientX - rect.left) / rect.width) * 100
+    const y = ((clientY - rect.top) / rect.height) * 100
+    setSpot({ x, y })
+  }
+
+  const pulseTouch = () => {
+    setTouched(true)
+    if (touchTimer.current) clearTimeout(touchTimer.current)
+    touchTimer.current = setTimeout(() => setTouched(false), 700)
+  }
 
   const handleClick = (e) => {
-    if (btnRef.current) createRipple(e, btnRef.current)
+    pulseTouch()
+    const point = e.touches?.[0] || e.changedTouches?.[0] || e
+    if (btnRef.current && point.clientX != null) {
+      createRipple(
+        { clientX: point.clientX, clientY: point.clientY },
+        btnRef.current,
+      )
+    }
     setTimeout(onOpen, 280)
   }
 
   const handlePointerMove = (e) => {
-    const page = pageRef.current
-    if (!page) return
-    const rect = page.getBoundingClientRect()
-    const x = ((e.clientX - rect.left) / rect.width) * 100
-    const y = ((e.clientY - rect.top) / rect.height) * 100
-    setSpot({ x, y })
+    moveSpot(e.clientX, e.clientY)
+  }
+
+  const handlePointerDown = (e) => {
+    moveSpot(e.clientX, e.clientY)
+    if (e.pointerType === 'touch') pulseTouch()
   }
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)')
+    const syncHover = () => setCanHover(mq.matches)
+    syncHover()
+    mq.addEventListener('change', syncHover)
     return () => {
       document.body.style.overflow = ''
+      mq.removeEventListener('change', syncHover)
+      if (touchTimer.current) clearTimeout(touchTimer.current)
     }
   }, [])
 
@@ -191,8 +222,9 @@ export default function LoadingScreen({ onOpen }) {
     >
       <section
         ref={pageRef}
-        className="invite-page front-card"
+        className={`invite-page front-card${touched ? ' is-touched' : ''}`}
         onPointerMove={handlePointerMove}
+        onPointerDown={handlePointerDown}
       >
         <div className="front-paper" />
         <div className="front-glow" aria-hidden="true" />
@@ -248,8 +280,8 @@ export default function LoadingScreen({ onOpen }) {
             initial={{ opacity: 0, y: -14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, ease }}
-            whileHover={{ y: -3, scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={canHover ? { y: -3, scale: 1.04 } : undefined}
+            whileTap={{ scale: 0.97, y: -2 }}
           >
             <TempleMotif />
             <Jewel />
@@ -260,8 +292,8 @@ export default function LoadingScreen({ onOpen }) {
             initial={{ opacity: 0, y: 18, filter: 'blur(6px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.16, duration: 0.85, ease }}
-            whileHover={{ letterSpacing: '0.34em', scale: 1.015 }}
-            whileTap={{ scale: 0.985 }}
+            whileHover={canHover ? { letterSpacing: '0.34em', scale: 1.015 } : undefined}
+            whileTap={{ scale: 0.97 }}
           >
             {bride.initial} & {groom.initial}
           </motion.p>
@@ -271,8 +303,8 @@ export default function LoadingScreen({ onOpen }) {
             initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.3, duration: 0.9, ease }}
-            whileHover={{ y: -2, scale: 1.02 }}
-            whileTap={{ scale: 0.985 }}
+            whileHover={canHover ? { y: -2, scale: 1.02 } : undefined}
+            whileTap={{ scale: 0.97, y: -1 }}
           >
             {bride.firstName} <span>&</span> {groom.firstName}
           </motion.h2>
@@ -290,8 +322,8 @@ export default function LoadingScreen({ onOpen }) {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.54, duration: 0.75, ease }}
-            whileHover={{ letterSpacing: '0.46em' }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={canHover ? { letterSpacing: '0.46em' } : undefined}
+            whileTap={{ scale: 0.97 }}
           >
             {cardDate}
           </motion.p>
@@ -301,8 +333,8 @@ export default function LoadingScreen({ onOpen }) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.66, duration: 0.7, ease }}
-            whileHover={{ scale: 1.12, y: -2 }}
-            whileTap={{ scale: 0.96 }}
+            whileHover={canHover ? { scale: 1.12, y: -2 } : undefined}
+            whileTap={{ scale: 1.08, y: -1 }}
           >
             <LotusMark className="front-lotus" />
           </motion.div>
@@ -317,8 +349,8 @@ export default function LoadingScreen({ onOpen }) {
             initial={{ scale: 0.82, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.72, duration: 0.6, ease }}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={canHover ? { scale: 1.08 } : undefined}
+            whileTap={{ scale: 0.94 }}
           >
             <span className="wax-seal-ring" aria-hidden="true" />
             <span className="wax-seal-ring wax-seal-ring-delay" aria-hidden="true" />
@@ -328,7 +360,13 @@ export default function LoadingScreen({ onOpen }) {
               </span>
             </span>
           </motion.button>
-          <p className="front-seal-hint">Open invitation</p>
+          <button
+            type="button"
+            className="front-seal-hint"
+            onClick={handleClick}
+          >
+            Open invitation
+          </button>
         </div>
       </section>
     </motion.section>
