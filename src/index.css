@@ -100,6 +100,32 @@ body {
   background: rgba(196, 165, 116, 0.12);
 }
 
+.map-view-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 1.35rem;
+  padding: 0.8rem 1.85rem;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #d4b896 0%, #c4a574 100%);
+  color: #fffdf8;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(196, 165, 116, 0.28);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.map-view-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 24px rgba(196, 165, 116, 0.36);
+}
+
 .btn-glow .ripple {
   position: absolute;
   border-radius: 50%;

@@ -153,7 +153,7 @@ const wedding = {
     todayIsWedding: 'Today is our Wedding ❤️',
     footerLove: 'Made with ❤️',
     locationEyebrow: 'Location',
-    locationHeading: 'Guruvayur Temple',
+    locationHeading: 'Find Us',
     locationIntro:
       'Wedding ceremony at the sacred Guruvayur Temple. Reception to follow at Idam Event Center, Thaikkad.',
     invitationCardLead: 'You are cordially invited to the wedding of',
