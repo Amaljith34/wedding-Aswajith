@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import wedding from '../config/wedding'
 
+const ease = [0.22, 1, 0.36, 1]
+
 function createRipple(e, container) {
   const rect = container.getBoundingClientRect()
   const size = Math.max(rect.width, rect.height)
@@ -153,19 +155,52 @@ export default function LoadingScreen({ onOpen }) {
     >
       <section className="invite-page front-card">
         <div className="front-paper" />
-        <CornerFlourish className="front-corner front-corner-tl" />
-        <CornerFlourish className="front-corner front-corner-tr" />
-        <CornerFlourish className="front-corner front-corner-bl" />
-        <CornerFlourish className="front-corner front-corner-br" />
+        <div className="front-glow" aria-hidden="true" />
+
+        <motion.div
+          className="front-corner front-corner-tl"
+          initial={{ opacity: 0, x: -8, y: -8 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ duration: 0.9, ease }}
+        >
+          <CornerFlourish />
+        </motion.div>
+        <motion.div
+          className="front-corner front-corner-tr"
+          initial={{ opacity: 0, x: 8, y: -8 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ duration: 0.9, ease }}
+        >
+          <CornerFlourish />
+        </motion.div>
+        <motion.div
+          className="front-corner front-corner-bl"
+          initial={{ opacity: 0, x: -8, y: 8 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.08, ease }}
+        >
+          <CornerFlourish />
+        </motion.div>
+        <motion.div
+          className="front-corner front-corner-br"
+          initial={{ opacity: 0, x: 8, y: 8 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.08, ease }}
+        >
+          <CornerFlourish />
+        </motion.div>
+
         <SideOrnaments side="left" />
         <SideOrnaments side="right" />
 
         <div className="front-card-inner">
           <motion.div
-            className="front-card-top"
-            initial={{ opacity: 0, y: -12 }}
+            className="front-temple-wrap"
+            initial={{ opacity: 0, y: -14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.85, ease }}
+            whileHover={{ y: -3, scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
           >
             <TempleMotif />
             <Jewel />
@@ -173,26 +208,30 @@ export default function LoadingScreen({ onOpen }) {
 
           <motion.p
             className="front-mono font-heading"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.75 }}
+            initial={{ opacity: 0, y: 18, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ delay: 0.16, duration: 0.85, ease }}
+            whileHover={{ letterSpacing: '0.34em', scale: 1.015 }}
+            whileTap={{ scale: 0.985 }}
           >
             {bride.initial} & {groom.initial}
           </motion.p>
 
           <motion.h2
             className="front-names font-heading"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.28, duration: 0.8 }}
+            initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ delay: 0.3, duration: 0.9, ease }}
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.985 }}
           >
             {bride.firstName} <span>&</span> {groom.firstName}
           </motion.h2>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.42 }}
+            initial={{ opacity: 0, scaleX: 0.7 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ delay: 0.44, duration: 0.7, ease }}
           >
             <Jewel />
           </motion.div>
@@ -201,15 +240,20 @@ export default function LoadingScreen({ onOpen }) {
             className="front-date"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.52, duration: 0.7 }}
+            transition={{ delay: 0.54, duration: 0.75, ease }}
+            whileHover={{ letterSpacing: '0.46em' }}
+            whileTap={{ scale: 0.98 }}
           >
             {cardDate}
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.64 }}
+            className="front-lotus-wrap"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.66, duration: 0.7, ease }}
+            whileHover={{ scale: 1.12, y: -2 }}
+            whileTap={{ scale: 0.96 }}
           >
             <LotusMark className="front-lotus" />
           </motion.div>
@@ -223,9 +267,9 @@ export default function LoadingScreen({ onOpen }) {
             aria-label={copy.openInvitation}
             initial={{ scale: 0.82, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.55, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ scale: 1.07 }}
-            whileTap={{ scale: 0.96 }}
+            transition={{ delay: 0.72, duration: 0.6, ease }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
           >
             <span className="wax-seal-ring" aria-hidden="true" />
             <span className="wax-seal-ring wax-seal-ring-delay" aria-hidden="true" />
