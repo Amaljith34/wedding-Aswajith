@@ -17,10 +17,10 @@ export default function Gallery() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
+          <p className="section-kicker mb-2">
             Memories
           </p>
-          <h2 className="font-heading text-4xl sm:text-5xl text-text">
+          <h2 className="section-title text-4xl sm:text-5xl text-text">
             Gallery
           </h2>
           <div className="ornament-line mt-4">
@@ -34,7 +34,7 @@ export default function Gallery() {
               key={img.id}
               type="button"
               onClick={() => setActive(img)}
-              className={`group relative overflow-hidden rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+              className={`gallery-tile group relative overflow-hidden rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                 img.featured
                   ? 'col-span-2 aspect-[16/10] md:col-span-2'
                   : 'aspect-square'
@@ -50,7 +50,7 @@ export default function Gallery() {
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/25 transition-colors duration-400" />
+              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-500" />
             </motion.button>
           ))}
         </div>

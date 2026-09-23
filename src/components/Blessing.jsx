@@ -13,9 +13,9 @@ export default function Blessing() {
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.9 }}
       >
-        <div className="glass-strong golden-border rounded-3xl px-8 py-12 sm:px-12 shadow-lg">
-          <p className="text-accent text-2xl mb-4">❦</p>
-          <h2 className="font-heading text-3xl sm:text-4xl text-text leading-snug mb-6">
+        <div className="glass-strong golden-border lift-card rounded-3xl px-8 py-12 sm:px-12 shadow-lg">
+          <p className="font-script text-4xl text-accent mb-4 leading-none">❦</p>
+          <h2 className="section-title text-3xl sm:text-4xl text-text leading-snug mb-6">
             {copy.blessingHeading}
           </h2>
           <div className="ornament-line mb-6">

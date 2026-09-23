@@ -38,7 +38,7 @@ export default function Hero() {
         className="relative z-10 mx-auto max-w-2xl px-6 py-20 text-center"
       >
         <motion.p
-          className="text-xs sm:text-sm tracking-[0.3em] uppercase text-accent mb-4"
+          className="section-kicker mb-4"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
@@ -56,7 +56,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.h2
-          className="font-heading text-5xl sm:text-7xl font-medium text-text tracking-wide"
+          className="font-heading text-5xl sm:text-7xl font-medium text-text tracking-[0.06em]"
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -64,7 +64,7 @@ export default function Hero() {
           {bride.firstName}
         </motion.h2>
         <motion.p
-          className="font-script text-4xl sm:text-5xl text-accent my-1 leading-none"
+          className="font-script text-5xl sm:text-6xl text-accent my-1 leading-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.65 }}
@@ -72,7 +72,7 @@ export default function Hero() {
           &
         </motion.p>
         <motion.h2
-          className="font-heading text-5xl sm:text-7xl font-medium text-text tracking-wide mb-10"
+          className="font-heading text-5xl sm:text-7xl font-medium text-text tracking-[0.06em] mb-10"
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.7 }}

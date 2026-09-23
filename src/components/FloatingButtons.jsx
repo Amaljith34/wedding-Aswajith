@@ -37,8 +37,8 @@ export default function FloatingButtons({ musicPlaying, onToggleMusic }) {
         const Icon = btn.icon
         const className = `flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all duration-300 ${
           btn.active
-            ? 'bg-primary text-cream'
-            : 'bg-cream/90 text-primary border border-accent/40 backdrop-blur-md hover:bg-accent hover:text-cream'
+            ? 'bg-primary text-cream shadow-[0_8px_22px_rgba(74,34,48,0.28)]'
+            : 'bg-cream/90 text-primary border border-accent/40 backdrop-blur-md hover:bg-accent hover:text-cream hover:shadow-[0_8px_20px_rgba(196,165,116,0.35)]'
         }`
 
         const content = (

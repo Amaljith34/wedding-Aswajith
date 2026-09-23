@@ -13,10 +13,10 @@ export default function Footer() {
         transition={{ duration: 0.7 }}
       >
         <p className="text-sm text-text-soft mb-2">{copy.footerLove}</p>
-        <p className="font-heading text-3xl text-text mb-1">
-          {bride.firstName} & {groom.firstName}
+        <p className="font-heading text-3xl sm:text-4xl text-text mb-1 tracking-[0.04em]">
+          {bride.firstName} <span className="font-script text-accent text-3xl">&</span> {groom.firstName}
         </p>
-        <p className="text-xs tracking-[0.25em] uppercase text-accent">
+        <p className="section-kicker">
           {date.displayLong}
         </p>
         <div className="ornament-line mt-6">

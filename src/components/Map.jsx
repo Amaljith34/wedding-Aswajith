@@ -16,10 +16,10 @@ export default function Map() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs tracking-[0.35em] uppercase text-accent mb-3">
+          <p className="section-kicker mb-3">
             {copy.locationEyebrow}
           </p>
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl text-text font-medium">
+          <h2 className="section-title text-4xl sm:text-5xl md:text-6xl text-text">
             {copy.locationHeading}
           </h2>
           <div className="ornament-line mt-4">
@@ -31,11 +31,12 @@ export default function Map() {
           {cards.map((place, i) => (
             <motion.article
               key={place.name}
-              className="flex flex-col overflow-hidden rounded-2xl bg-ivory shadow-[0_18px_50px_rgba(44,36,32,0.08)] ring-1 ring-accent/20"
+              className="location-card lift-card flex flex-col overflow-hidden rounded-2xl shadow-[0_18px_50px_rgba(44,36,32,0.08)] ring-1 ring-accent/20"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.12 }}
+              whileHover={{ y: -6 }}
             >
               <div className="aspect-[16/10] w-full bg-[#EDE6D9]">
                 <iframe
@@ -48,12 +49,12 @@ export default function Map() {
                 />
               </div>
               <div className="px-6 pt-7 pb-8 text-center sm:px-8">
-                <p className="text-[11px] tracking-[0.28em] uppercase text-text-soft mb-3">
+                <p className="section-kicker mb-3 text-text-soft">
                   {place.eyebrow}
                   <span className="mx-2 text-accent">·</span>
                   {place.time}
                 </p>
-                <h3 className="font-heading text-2xl sm:text-[1.7rem] text-text tracking-wide mb-2">
+                <h3 className="font-heading text-2xl sm:text-[1.75rem] text-text tracking-[0.04em] mb-2">
                   {place.name}
                 </h3>
                 {place.lines.map((line) => (

@@ -14,10 +14,10 @@ export default function Invitation() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs tracking-[0.3em] uppercase text-primary mb-2">
+          <p className="section-kicker mb-2">
             Our Invitation
           </p>
-          <h2 className="font-heading text-4xl sm:text-5xl text-text">
+          <h2 className="section-title text-4xl sm:text-5xl text-text">
             You Are Invited
           </h2>
           <div className="ornament-line mt-4">
@@ -36,7 +36,7 @@ export default function Invitation() {
           <div className="glass-strong relative overflow-hidden rounded-2xl shadow-[0_25px_60px_rgba(62,58,54,0.12)] golden-border p-3 sm:p-4 transition-transform duration-500 group-hover:scale-[1.02]">
             <img
               src={images.invitation}
-              alt="Wedding invitation of Saranya and Akhilraj"
+              alt="Wedding invitation of Suchithra and Aswajith"
               className="w-full rounded-xl object-cover"
               loading="lazy"
             />

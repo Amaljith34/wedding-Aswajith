@@ -15,16 +15,16 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
+          <p className="section-kicker mb-2">
             Get in Touch
           </p>
-          <h2 className="font-heading text-4xl sm:text-5xl text-text mb-8">
+          <h2 className="section-title text-4xl sm:text-5xl text-text mb-8">
             Contact
           </h2>
         </motion.div>
 
         <motion.div
-          className="glass-strong golden-border rounded-3xl px-8 py-10 shadow-md"
+          className="glass-strong golden-border lift-card rounded-3xl px-8 py-10 shadow-md"
           initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

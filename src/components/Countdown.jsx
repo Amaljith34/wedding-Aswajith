@@ -4,11 +4,11 @@ import wedding from '../config/wedding'
 
 function TimeBox({ value, label }) {
   return (
-    <div className="glass flex flex-col items-center rounded-2xl px-3 py-4 sm:px-5 sm:py-5 min-w-[4.5rem] sm:min-w-[5.5rem] shadow-sm">
+    <div className="glass lift-card flex flex-col items-center rounded-2xl px-3 py-4 sm:px-5 sm:py-5 min-w-[4.5rem] sm:min-w-[5.5rem] shadow-sm">
       <span className="font-heading text-3xl sm:text-4xl text-primary font-medium tabular-nums">
         {String(value).padStart(2, '0')}
       </span>
-      <span className="mt-1 text-[10px] sm:text-xs tracking-[0.2em] uppercase text-text-soft">
+      <span className="section-kicker mt-1.5 text-[9px] sm:text-[10px]">
         {label}
       </span>
     </div>
@@ -59,16 +59,16 @@ export default function CountdownSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
+          <p className="section-kicker mb-2">
             Save the Date
           </p>
-          <h2 className="font-heading text-4xl sm:text-5xl text-text mb-8">
+          <h2 className="section-title text-4xl sm:text-5xl text-text mb-8">
             {copy.ceremonyHeading}
           </h2>
         </motion.div>
 
         <motion.div
-          className="glass-strong golden-border mx-auto mb-10 max-w-sm rounded-3xl px-6 py-8 shadow-lg"
+          className="glass-strong golden-border lift-card mx-auto mb-10 max-w-sm rounded-3xl px-6 py-8 shadow-lg"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

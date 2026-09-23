@@ -34,10 +34,10 @@ export default function Details() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs tracking-[0.3em] uppercase text-accent mb-2">
+          <p className="section-kicker mb-2">
             The Celebration
           </p>
-          <h2 className="font-heading text-4xl sm:text-5xl text-text">
+          <h2 className="section-title text-4xl sm:text-5xl text-text">
             Event Details
           </h2>
           <div className="ornament-line mt-4">
@@ -52,7 +52,7 @@ export default function Details() {
             return (
               <motion.article
                 key={card.title}
-                className="glass-strong golden-border rounded-2xl px-6 py-8 text-center shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="glass-strong golden-border lift-card rounded-2xl px-6 py-8 text-center shadow-md"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
