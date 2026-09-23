@@ -3,10 +3,12 @@
 @theme {
   --color-cream: #F7F3EB;
   --color-ivory: #FFFcf6;
+  --color-offwhite: #F8F4EC;
   --color-primary: #4A2230;
   --color-accent: #C4A574;
   --color-text: #2C2420;
   --color-text-soft: #6B6560;
+  --color-seal: #6B3A32;
   --font-heading: "Cormorant Garamond", Georgia, serif;
   --font-body: "Outfit", system-ui, sans-serif;
   --font-script: "Great Vibes", cursive;
@@ -125,6 +127,328 @@ body {
   to {
     transform: scale(4);
     opacity: 0;
+  }
+}
+
+.loading-screen {
+  background-color: var(--color-offwhite);
+}
+
+.invite-suite {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.invite-paper {
+  position: relative;
+  background: #fbf7f0;
+  border: 1px solid rgba(196, 165, 116, 0.55);
+  box-shadow:
+    0 10px 36px rgba(62, 58, 54, 0.06),
+    inset 0 0 0 1px rgba(255, 252, 246, 0.8);
+}
+
+.invite-card {
+  padding: 1.15rem 1.25rem 1.6rem;
+  text-align: center;
+}
+
+.invite-envelope {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.15rem 1.25rem 1.35rem;
+}
+
+.invite-corner {
+  position: absolute;
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--color-accent);
+  pointer-events: none;
+}
+
+.invite-corner-tl {
+  top: 0.7rem;
+  left: 0.7rem;
+}
+
+.invite-corner-tr {
+  top: 0.7rem;
+  right: 0.7rem;
+}
+
+.invite-corner-bl {
+  bottom: 0.7rem;
+  left: 0.7rem;
+}
+
+.invite-corner-br {
+  bottom: 0.7rem;
+  right: 0.7rem;
+}
+
+.invite-mono {
+  margin: 0.15rem 0 0.35rem;
+  color: var(--color-primary);
+  font-size: clamp(2rem, 7vw, 3.15rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  line-height: 1;
+}
+
+.invite-names {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.45rem 0.7rem;
+  color: var(--color-primary);
+  font-size: clamp(1.45rem, 4.6vw, 2.15rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+}
+
+.invite-names-amp {
+  font-family: var(--font-script);
+  font-style: normal;
+  color: var(--color-accent);
+  font-size: 1.15em;
+  line-height: 0.8;
+}
+
+.invite-jewel {
+  margin: 0.45rem 0 0.35rem;
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+}
+
+.invite-date {
+  color: var(--color-primary);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.envelope-flap {
+  display: block;
+  width: 100%;
+  height: 7.6rem;
+  overflow: visible;
+}
+
+.flap-monogram {
+  position: absolute;
+  top: 1.55rem;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  width: 4.4rem;
+  height: 4.4rem;
+  transform: translateX(-50%);
+  place-items: center;
+  border: 1px solid rgba(196, 165, 116, 0.85);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px #fbf7f0, inset 0 0 0 4px rgba(196, 165, 116, 0.45);
+  color: var(--color-primary);
+  pointer-events: none;
+}
+
+.flap-monogram-s {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.7rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.flap-monogram-a {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.55rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.flap-monogram-ornament {
+  color: var(--color-accent);
+  font-size: 0.45rem;
+}
+
+.wax-seal {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  width: 4.65rem;
+  height: 4.65rem;
+  margin-top: 0.15rem;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.wax-seal:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 6px;
+  border-radius: 50%;
+}
+
+.wax-seal-ring {
+  position: absolute;
+  inset: -7px;
+  border: 1.5px solid rgba(107, 58, 50, 0.32);
+  border-radius: 50%;
+  animation: seal-ping 2.7s ease-out infinite;
+  pointer-events: none;
+}
+
+.wax-seal-ring-delay {
+  animation-delay: 1.35s;
+}
+
+.wax-seal-face {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, #8a4d43 0%, #6b3a32 46%, #4e2923 100%);
+  box-shadow:
+    0 6px 18px rgba(78, 41, 35, 0.28),
+    inset 0 1px 0 rgba(255, 244, 230, 0.22),
+    inset 0 0 0 4px rgba(251, 247, 240, 0.08);
+  animation: seal-breathe 2.8s ease-in-out infinite;
+}
+
+.wax-seal-face::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(248, 244, 236, 0.28);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.wax-seal-text {
+  color: #f8f4ec;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.wax-seal-face .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes seal-breathe {
+  0%,
+  100% {
+    box-shadow:
+      0 6px 18px rgba(78, 41, 35, 0.26),
+      inset 0 1px 0 rgba(255, 244, 230, 0.22),
+      inset 0 0 0 4px rgba(251, 247, 240, 0.08),
+      0 0 0 0 rgba(107, 58, 50, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 8px 24px rgba(78, 41, 35, 0.34),
+      inset 0 1px 0 rgba(255, 244, 230, 0.22),
+      inset 0 0 0 4px rgba(251, 247, 240, 0.08),
+      0 0 16px 2px rgba(107, 58, 50, 0.18);
+  }
+}
+
+@keyframes seal-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.42);
+    opacity: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .invite-card {
+    padding: 1.4rem 2.2rem 1.85rem;
+  }
+
+  .invite-envelope {
+    padding: 1.4rem 2rem 1.7rem;
+  }
+
+  .envelope-flap {
+    height: 9.2rem;
+  }
+
+  .flap-monogram {
+    top: 1.8rem;
+    width: 5.1rem;
+    height: 5.1rem;
+  }
+
+  .flap-monogram-s,
+  .flap-monogram-a {
+    font-size: 1.35rem;
+  }
+
+  .wax-seal {
+    width: 5.25rem;
+    height: 5.25rem;
+  }
+
+  .wax-seal-text {
+    font-size: 1.2rem;
+  }
+
+  .invite-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.38em;
+  }
+}
+
+@media (max-height: 700px) {
+  .invite-suite {
+    gap: 0.65rem;
+  }
+
+  .invite-card {
+    padding-top: 0.85rem;
+    padding-bottom: 1.1rem;
+  }
+
+  .invite-envelope {
+    padding-bottom: 1.1rem;
+  }
+
+  .envelope-flap {
+    height: 6.4rem;
   }
 }
 
