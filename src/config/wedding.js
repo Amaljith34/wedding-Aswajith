@@ -1,11 +1,11 @@
 import heroImg from '../assets/images/photo-walk.jpg'
-import gallery1 from '../assets/images/photo-field.jpg'
+import gallery1 from '../assets/images/photo-dinner.jpg'
 import gallery2 from '../assets/images/photo-portrait.jpg'
 import gallery3 from '../assets/images/photo-cake.jpg'
 import gallery4 from '../assets/images/photo-closeup.jpg'
 import gallery5 from '../assets/images/photo-walk.jpg'
 import gallery6 from '../assets/images/photo-ring.jpg'
-import gallery7 from '../assets/images/photo-dinner.jpg'
+import gallery7 from '../assets/images/photo-field.jpg'
 
 /**
  * Single source of truth — edit names, date, venue, phone, map here.
@@ -91,6 +91,7 @@ const wedding = {
 
   images: {
     invitation: '/card/wedding-card-full.webp',
+    cover: '/card/invite-cover.jpg',
     hero: heroImg,
     gallery: [
       {

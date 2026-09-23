@@ -215,7 +215,21 @@ body {
 }
 
 .loading-screen {
-  background-color: var(--color-offwhite);
+  background-color: #f7f1e6;
+}
+
+.invite-cover {
+  position: relative;
+  width: min(100%, 42rem);
+  margin-inline: auto;
+}
+
+.invite-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .invite-suite {
@@ -368,21 +382,51 @@ body {
   font-size: 0.45rem;
 }
 
+.wax-seal-anchor {
+  position: absolute;
+  top: 88.4%;
+  left: 50%;
+  z-index: 3;
+  width: max(3.25rem, 10.8%);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+}
+
 .wax-seal {
   position: relative;
   z-index: 3;
   display: grid;
-  width: 4.65rem;
-  height: 4.65rem;
-  margin-top: 0.15rem;
+  width: 100%;
+  height: 100%;
   padding: 0;
   place-items: center;
   border: 0;
+  border-radius: 50%;
   background: transparent;
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+}
+
+.wax-seal-hotspot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.wax-seal-hotspot .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
 }
 
 .wax-seal:focus-visible {
@@ -502,11 +546,6 @@ body {
     font-size: 1.35rem;
   }
 
-  .wax-seal {
-    width: 5.25rem;
-    height: 5.25rem;
-  }
-
   .wax-seal-text {
     font-size: 1.2rem;
   }
@@ -518,6 +557,10 @@ body {
 }
 
 @media (max-height: 700px) {
+  .invite-cover {
+    width: min(100%, 34rem);
+  }
+
   .invite-suite {
     gap: 0.65rem;
   }
