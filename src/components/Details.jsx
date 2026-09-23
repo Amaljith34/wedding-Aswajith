@@ -19,6 +19,7 @@ const cards = [
     lines: () => [
       wedding.date.receptionTime,
       wedding.locations.reception.name,
+      ...wedding.locations.reception.lines,
     ],
   },
 ]

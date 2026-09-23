@@ -66,11 +66,11 @@ const wedding = {
     reception: {
       eyebrow: 'Reception',
       time: '11:30 AM',
-      name: 'Idam Event Center',
-      lines: ['Thaikkad, Guruvayur', 'Thrissur, Kerala'],
-      url: 'https://www.google.com/maps/search/?api=1&query=Idam+Event+Center+Thaikkad+Guruvayur',
+      name: 'PPR Courtyard',
+      lines: ['Chavakkad - Kanjani Rd, Pavaratty, Kerala'],
+      url: 'https://maps.app.goo.gl/uSaG12m6BwnLpvx47',
       embedUrl:
-        'https://maps.google.com/maps?q=Idam+Event+Center+Thaikkad+Guruvayur&z=16&output=embed',
+        'https://maps.google.com/maps?q=PPR+Courtyard+Chavakkad+Kanjani+Rd+Pavaratty+Kerala&z=16&output=embed',
     },
   },
 
@@ -149,14 +149,14 @@ const wedding = {
     blessingText:
       'Your love, blessings and presence will make our celebration truly memorable.',
     quote: 'Two souls,\none heart,\none beautiful journey.',
-    receptionNote: 'Reception at 11:30 AM · Idam Event Center, Thaikkad',
+    receptionNote: 'Reception at 11:30 AM · PPR Courtyard, Pavaratty',
     ceremonyHeading: 'Wedding Ceremony',
     todayIsWedding: 'Today is our Wedding ❤️',
     footerLove: 'Made with ❤️',
     locationEyebrow: 'Location',
     locationHeading: 'Find Us',
     locationIntro:
-      'Wedding ceremony at the sacred Guruvayur Temple. Reception to follow at Idam Event Center, Thaikkad.',
+      'Wedding ceremony at the sacred Guruvayur Temple. Reception to follow at PPR Courtyard, Pavaratty.',
     invitationCardLead: 'You are cordially invited to the wedding of',
     invitationBlessing:
       'With the blessings of Almighty, we joyfully invite you to grace the wedding of',
@@ -167,7 +167,7 @@ const wedding = {
   seo: {
     title: 'Suchithra & Aswajith — Wedding Invitation',
     description:
-      'You are cordially invited to the wedding of Suchithra & Aswajith on Sunday, 8 November 2026 at Guruvayur Temple. Reception at Idam Event Center, Thaikkad.',
+      'You are cordially invited to the wedding of Suchithra & Aswajith on Sunday, 8 November 2026 at Guruvayur Temple. Reception at PPR Courtyard, Pavaratty.',
   },
 }
 

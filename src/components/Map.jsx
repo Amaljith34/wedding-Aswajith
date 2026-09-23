@@ -49,9 +49,10 @@ export default function Map() {
                 />
               </div>
               <div className="px-6 pt-7 pb-8 text-center sm:px-8">
-                <p className="section-kicker mb-3 text-text-soft">
+                <p className="section-kicker mb-2 text-text-soft">
                   {place.eyebrow}
-                  <span className="mx-2 text-accent">·</span>
+                </p>
+                <p className="text-sm tracking-[0.16em] uppercase text-accent mb-3">
                   {place.time}
                 </p>
                 <h3 className="font-heading text-2xl sm:text-[1.75rem] text-text tracking-[0.04em] mb-2">
