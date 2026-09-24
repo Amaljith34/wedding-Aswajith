@@ -90,7 +90,7 @@ const wedding = {
   },
 
   images: {
-    invitation: '/card/wedding-card-full.webp',
+    invitation: 'https://paars-ecomerce.s3.ap-south-1.amazonaws.com/9cb2ea8c-c540-4d51-9876-1d2a2495105b.jpeg',
     cover: '/card/invite-cover.jpg',
     hero: heroImg,
     gallery: [
